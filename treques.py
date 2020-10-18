@@ -77,13 +77,14 @@ class Tree:
             if k:
                 l.append(k)
                 k=k.left
+                if k:
+                    sum+=k.value
             elif l:
                 k=l.pop()
-                print(k.value,end=" ")
                 k=k.right
             else:
                 break
-
+        print(sum)
 
 t=Tree(Node(1))
 t.root.left=Node(2)
