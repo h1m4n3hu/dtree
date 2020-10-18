@@ -9,6 +9,7 @@ l=[]
 class Tree:
     def __init__(self,root):
         self.root=root
+        self.sum=0
 
     def pre_traversal(self,start,res):
         if start:
@@ -68,23 +69,39 @@ class Tree:
                 l.append(k.right)
             if k.left:
                 l.append(k.left)
-        print(sum)
+        return sum
 
     def sum_left(self):
         sum=0
         k=self.root
-        while True:
-            if k:
-                l.append(k)
-                k=k.left
-                if k:
-                    sum+=k.value
-            elif l:
-                k=l.pop()
-                k=k.right
-            else:
-                break
-        print(sum)
+        l.append(self.root)
+        while len(l)>0:
+            node=l.pop()
+            if node.right:
+                l.append(node.right)
+            if node.left:
+                l.append(node.left)
+                sum+=node.left.value
+        return sum
+
+    def level_travel(self):
+        l.append(self.root)
+        res=""
+        while l:
+            res+=str(l[-1].value)+" "
+            node=l.pop()
+            if node.left:l.insert(0,node.left)
+            elif node.right:l.insert(0,node.right)
+        print(res)
+
+    def leaf_sum(self,root):
+        if not root.left and not root.right:
+            self.sum+=root.value
+        if root.left:
+            self.leaf_sum(root.left)
+        if root.right:
+            self.leaf_sum(root.right)
+        print(self.sum)
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -96,4 +113,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.sum_left()
+t.leaf_sum(t.root)
