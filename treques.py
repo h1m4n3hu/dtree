@@ -149,12 +149,41 @@ class Tree:
         l.append(self.root)
         while l:
             k=l.pop()
-            print(k.value)
-            if k.left:
-                l.insert(0,k.left)
-            if k.right:
-                l.insert(0,k.right)
+            if t.level_of_a_node(t.root,k.value,0)%2==0:
+                if k.left:
+                    l.insert(0,k.left)
+                if k.right:
+                    l.insert(0,k.right)
+                print(k.value)
+            if t.level_of_a_node(t.root,k.value,0)%2!=0:
+                if k.right:
+                    l.insert(0,k.right)
+                if k.left:
+                    l.insert(0,k.left)
+                print(k.value)
         #not complete. try on your own in future if you are seeing this
+
+    def level_of_a_node(self,head,value,lev):
+        if head.value==value:
+            self.sum=lev
+        if head.right:
+            self.level_of_a_node(head.right,value,lev+1)
+        if head.left:
+            self.level_of_a_node(head.left,value,lev+1)
+        return self.sum
+
+    def child_sum(self,k):
+        if k:
+            if k.left and k.right:
+                if k.left.value+k.right.value==k.value:
+                    print(str(k.left.value)+"+"+str(k.right.value)+"="+str(k.value))
+            if k.left:
+                self.child_sum(k.left)
+            if k.right:
+                self.child_sum(k.right)
+
+    def sum_tree(self):
+        pass
 
 t=Tree(Node(1))
 t.root.left=Node(2)
