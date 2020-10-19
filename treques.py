@@ -86,13 +86,17 @@ class Tree:
 
     def level_travel(self):
         l.append(self.root)
-        res=""
+        l2=[]
+        #res=""
         while l:
-            res+=str(l[-1].value)+" "
+            #res+=str(l[-1].value)+" "
+            l2.append(l[-1].value)
             node=l.pop()
-            if node.left:l.insert(0,node.left)
-            elif node.right:l.insert(0,node.right)
-        print(res)
+            if node.left:
+                l.insert(0,node.left)
+            if node.right:
+                l.insert(0,node.right)
+        print(l2)
 
     def leaf_sum(self,node):
         if node.left or node.right:
@@ -103,13 +107,6 @@ class Tree:
         if node.right:
             self.leaf_sum(node.right)
         print(self.sum)
-
-    def longest(self,head):
-        print(head.value)
-        if head.right:
-            self.longest(head.right)
-        if head.left:
-            self.longest(head.left)
 
     def leaves(self,head):
         if head:
@@ -140,6 +137,25 @@ class Tree:
                 print(l[j+1].value)
             j+=1
 
+    def height(self,head):
+        if head is None:
+            return 0
+        else:
+            lt=self.height(head.left)
+            rt=self.height(head.right)
+            return 1+max(lt,rt)
+
+    def spiral_level(self):
+        l.append(self.root)
+        while l:
+            k=l.pop()
+            print(k.value)
+            if k.left:
+                l.insert(0,k.left)
+            if k.right:
+                l.insert(0,k.right)
+        #not complete. try on your own in future if you are seeing this
+
 t=Tree(Node(1))
 t.root.left=Node(2)
 t.root.right=Node(3)
@@ -150,4 +166,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.inorder_successor(6)
+t.spiral_level()
