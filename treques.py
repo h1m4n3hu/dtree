@@ -182,8 +182,30 @@ class Tree:
             if k.right:
                 self.child_sum(k.right)
 
-    def sum_tree(self):
-        pass
+    def sum_tree(self,k):
+        if k:
+            if k.left and k.right:
+                print(k.left.value+k.right.value==k.value)
+            if k.left:
+                self.sum_tree(k.left)
+            if k.right:
+                self.sum_tree(k.right)
+
+    def lvl_wise(self):
+        l.append(self.root)
+        l2=[]
+        while l:
+            l2.append(l[-1].value)
+            node=l.pop()
+            if node.left:
+                l.insert(0,node.left)
+            if node.right:
+                l.insert(0,node.right)
+        print(l2)
+
+    def diameter(self):
+        k=self.root
+
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -195,4 +217,3 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.spiral_level()
