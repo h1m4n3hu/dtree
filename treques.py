@@ -10,7 +10,7 @@ class Tree:
     def __init__(self,root):
         self.root=root
         self.sum=0
-        self.s=0
+        self.s=""
 
     def pre_traversal(self,start,res):
         if start:
@@ -191,21 +191,13 @@ class Tree:
             if k.right:
                 self.sum_tree(k.right)
 
-    def lvl_wise(self):
-        l.append(self.root)
-        l2=[]
-        while l:
-            l2.append(l[-1].value)
-            node=l.pop()
-            if node.left:
-                l.insert(0,node.left)
-            if node.right:
-                l.insert(0,node.right)
-        print(l2)
-
-    def diameter(self):
-        k=self.root
-
+    def diameter(self,k):
+        if k is None:
+            return 0
+        else:
+            lt = self.height(k.left)
+            rt = self.height(k.right)
+            return 1+lt+rt
 
 t=Tree(Node(1))
 t.root.left=Node(2)

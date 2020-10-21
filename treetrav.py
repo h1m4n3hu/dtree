@@ -37,11 +37,15 @@ class Tree:
         l.append(self.root)
         while len(l)>0:
             node=l.pop()
-            print(node.value)
+            print("     ",node.value)
+            for i in l:print(i.value,end=" ")
             if node.right:
                 l.append(node.right)
+                for i in l:print(i.value,end=" ")
             if node.left:
                 l.append(node.left)
+                for i in l:print(i.value,end=" ")
+            print("----------------------")
 
     def postorder_iter(self):
         s1=[]
@@ -97,7 +101,6 @@ class Tree:
         print(m)
 
     def in_find(self,n):
-        l=[]
         var=0
         k=self.root
         while True:
@@ -116,23 +119,52 @@ class Tree:
 
     def pre_find(self,n):
         k=self.root
-        l=[]
+        l1=[]
         l2=[]
         var=0
-        l.append(k)
-        while l:
-            k=l.pop()
+        l1.append(k)
+        while l1:
+            k=l1.pop()
             l2.append(k)
             if k.left:
-                l.append(k.left)
+                l1.append(k.left)
             if k.right:
-                l.append(k.right)
+                l1.append(k.right)
         while l2:
             k=l2.pop()
             if k.value==n:
                 break
             var+=1
         print(var)
+
+    def in_pre_post(self,ino,pre,gap):
+        gap=gap-3
+        for i in range(len(ino)):
+            if ino[i]==pre[0]:
+                self.in_pre_post(ino[0:i],pre[1:],gap)
+                print("  "*gap,ino[i])
+                self.in_pre_post(ino[i+1:],pre[len(ino[0:i])+1:],gap)
+                #print(ino[0:i],ino[i],ino[i+1:])
+
+    #no of levels in a binary tree
+    def depth(self,head):
+        if not head:
+            return 0
+        return 1+max(self.depth(head.left),self.depth(head.right))
+
+    #no of nodes in a binary tree
+    def size(self,head):
+        if not head:
+            return 0
+        return 1+self.depth(head.left)+self.depth(head.right)
+
+    def boundary(self):
+        k=self.root
+        print(self.root.value,end=" ")
+        if k.left is not None:
+            print(k.left.value,end=" ")
+            k=k.left
+        k=self.root
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -144,3 +176,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
+t.boundary()
