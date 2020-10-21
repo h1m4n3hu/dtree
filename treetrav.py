@@ -158,13 +158,50 @@ class Tree:
             return 0
         return 1+self.depth(head.left)+self.depth(head.right)
 
+    #leaves of a tree
+    def leaves(self,k):
+        if not k.right or not k.left:
+            print(k.value,end=" ")
+        if k.left:
+            self.leaves(k.left)
+        if k.right:
+            self.leaves(k.right)
+
     def boundary(self):
-        k=self.root
+        k=j=i=self.root
         print(self.root.value,end=" ")
-        if k.left is not None:
+        while k.left.left:
             print(k.left.value,end=" ")
             k=k.left
+        while j.right.right:
+            print(j.right.value,end=" ")
+            j=j.right
+        self.leaves(i)
+
+    #level order traversal reversal
+    def rev_level(self):
+        l2=[]
         k=self.root
+        l.append(k)
+        while len(l)>0:
+            k=l.pop(0)
+            l2.append(k)
+            if k.right:
+                l.append(k.right)
+            if k.left:
+                l.append(k.left)
+        l2.reverse()
+        for i in l2:print(i.value)
+
+    #nodes at a level k
+    def dist(self,head,k):
+        if head is None:
+            return
+        if k==0:
+            print(head.value)
+        else:
+            self.dist(head.left, k - 1)
+            self.dist(head.right, k - 1)
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -176,4 +213,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.boundary()
+t.dist(t.root,2)
