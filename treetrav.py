@@ -212,21 +212,21 @@ class Tree:
             self.dist(head.left,k-1)
             self.dist(head.right,k-1)
 
-    def possible_paths(self,head,s=""):
+    def possible_paths(self,head,st=""):
         if head:
-            s+=str(head.value)
+            st+=str(head.value)
         if head is None:
-            print(s)
+            print(st)
         else:
-            self.possible_paths(head.left,s)
-            self.possible_paths(head.right,s)
+            self.possible_paths(head.left,st)
+            self.possible_paths(head.right,st)
 
-    def path_of_a_leaf(self,head,leaf,s=""):
+    def path_of_a_leaf(self,head,leaf,st=""):
         if head:
-            s += str(head.value)
+            st += str(head.value)
         if head is None:
-            if int(s[-1])==leaf:
-                print(s)
+            if int(st[-1])==leaf:
+                print(st)
         else:
             self.path_of_a_leaf(head.left,leaf,s)
             self.path_of_a_leaf(head.right,leaf,s)
@@ -237,6 +237,12 @@ class Tree:
                 print(head.value)
             self.a_leaf(head.left,value)
             self.a_leaf(head.right,value)
+
+    def subtrees(self,head):
+        if head:
+            print(self.pre_traversal(head,""))
+            self.subtrees(head.left)
+            self.subtrees(head.right)
 
 
 
@@ -250,4 +256,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-print(t.size(t.root),'~~')
+t.subtrees(t.root)
