@@ -5,6 +5,7 @@ class Node:
         self.right=None
 
 l=[]
+s=""
 
 class Tree:
     def __init__(self,root):
@@ -147,16 +148,24 @@ class Tree:
                 #print(ino[0:i],ino[i],ino[i+1:])
 
     #no of levels in a binary tree
-    def depth(self,head):
+    def height(self,head):
         if not head:
             return 0
-        return 1+max(self.depth(head.left),self.depth(head.right))
+        return 1+max(self.height(head.left),self.height(head.right))
 
     #no of nodes in a binary tree
     def size(self,head):
         if not head:
             return 0
-        return 1+self.depth(head.left)+self.depth(head.right)
+        return 1+self.size(head.left)+self.size(head.right)
+
+    def diameter(self,k):
+        if k is None:
+            return 0
+        else:
+            lt = self.height(k.left)
+            rt = self.height(k.right)
+            return 1+lt+rt
 
     #leaves of a tree
     def leaves(self,k):
@@ -203,6 +212,33 @@ class Tree:
             self.dist(head.left,k-1)
             self.dist(head.right,k-1)
 
+    def possible_paths(self,head,s=""):
+        if head:
+            s+=str(head.value)
+        if head is None:
+            print(s)
+        else:
+            self.possible_paths(head.left,s)
+            self.possible_paths(head.right,s)
+
+    def path_of_a_leaf(self,head,leaf,s=""):
+        if head:
+            s += str(head.value)
+        if head is None:
+            if int(s[-1])==leaf:
+                print(s)
+        else:
+            self.path_of_a_leaf(head.left,leaf,s)
+            self.path_of_a_leaf(head.right,leaf,s)
+
+    def a_leaf(self,head,value):
+        if head:
+            if head.left.value == value or head.right.value == value:
+                print(head.value)
+            self.a_leaf(head.left,value)
+            self.a_leaf(head.right,value)
+
+
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -214,3 +250,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
+print(t.size(t.root),'~~')
