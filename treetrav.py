@@ -244,7 +244,23 @@ class Tree:
             self.subtrees(head.left)
             self.subtrees(head.right)
 
+    def min_depth(self,head):
+        if head is None:
+            return 0
+        return 1+min(self.min_depth(head.left),self.min_depth(head.right))
 
+    def lvl(self,head,value,level=1):
+        if head:
+            if head.value==value:
+                print(level)
+            self.lvl(head.left,value,level+1)
+            self.lvl(head.right,value,level+1)
+
+    def node2node(self,head,val1,val2):
+        if head and head.left and head.right:
+            print(head.left.value,head.value,head.right.value)
+            self.node2node(head.left,val1,val2)
+            self.node2node(head.right,val1,val2)
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -256,4 +272,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.subtrees(t.root)
+t.node2node(t.root,4,5)
