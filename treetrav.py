@@ -277,6 +277,7 @@ class Tree:
             break
 
 
+
 t=Tree(Node(1))
 t.root.left=Node(2)
 t.root.right=Node(3)
@@ -287,4 +288,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.poof()
+t.rev_level()

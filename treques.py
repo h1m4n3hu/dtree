@@ -199,6 +199,8 @@ class Tree:
             rt = self.height(k.right)
             return 1+lt+rt
 
+
+
 t=Tree(Node(1))
 t.root.left=Node(2)
 t.root.right=Node(3)
