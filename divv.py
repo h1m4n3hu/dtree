@@ -41,11 +41,44 @@ class DLL:
     def delete(self,val):
         k=self.head
         while k:
-            temp=k
             if k.value==val:
-                temp.next=k.next
-                k.next.prev=temp
+                a=k.prev
+                k.prev.next=k.next
+                k.next.prev=a
             k=k.next
+
+    def index(self,val):
+        i=0
+        k=self.head
+        while k:
+            if k.value==val:
+                return i
+            i+=1
+            k=k.next
+
+    def len(self):
+        i=0
+        k=self.head
+        while k:
+            i+=1
+            k=k.next
+        return i
+
+    def val_at_index(self,index):
+        len_list=d.len()
+        i=0
+        k=self.head
+        while i<len_list:
+            if i==index:
+                return (k.value)
+            i+=1
+            k=k.next
+
+    def del_at_position(self,index):
+        a=d.val_at_index(index)
+        d.delete(a)
+
+    
 
 d=DLL()
 d.append(10)
@@ -53,8 +86,7 @@ d.append(20)
 d.append(30)
 d.append(40)
 d.append(50)
-d.delete(30)
 d.traverse()
 
 #   10<->20<->30<->40<->50
-#   10<->20<->40
+#   10<->20<->40<->50
