@@ -78,7 +78,29 @@ class DLL:
         a=d.val_at_index(index)
         d.delete(a)
 
-    
+    def reverse(self):
+        first=self.head
+        curr=None
+        while first:
+            curr=first
+            first.prev,first.next=first.next,first.prev
+            first=first.prev
+        self.head=curr
+
+    def insert_at(self,value,index):
+        a=d.len()
+        i=0
+        k=self.head
+        n=Node(value)
+        while i<a:
+            if i==index:
+                p=k.next
+                k.next=n
+                n.next=p
+                n.prev=k
+                n.next.prev=n
+            i+=1
+            k=k.next
 
 d=DLL()
 d.append(10)
@@ -86,7 +108,7 @@ d.append(20)
 d.append(30)
 d.append(40)
 d.append(50)
+d.insert_at(44,3)
 d.traverse()
 
 #   10<->20<->30<->40<->50
-#   10<->20<->40<->50
