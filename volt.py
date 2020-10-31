@@ -1,50 +1,45 @@
 class Node:
     def __init__(self,value):
         self.value=value
-        self.prev=None
         self.next=None
 
-class DLL:
+class LL:
     def __init__(self):
         self.head=None
 
     def traverse(self):
         k=self.head
-        while k is not None:
+        while k:
             print(k.value)
             k=k.next
 
     def append(self,value):
         if self.head is None:
-            n=Node(value)
-            self.head=n
+            self.head=Node(value)
         else:
             k=self.head
-            n=Node(value)
-            while k:
-                temp=k
+            while k.next:
                 k=k.next
-            temp.next=n
-            n.prev=temp
+            k.next=Node(value)
 
     def prepend(self,value):
         if self.head is None:
-            n=Node(value)
-            n.next=self.head
-            self.head=n
+            self.head=Node(value)
         else:
-            n=Node(value)
-            n.next=self.head
-            self.head.prev=n
-            self.head=n
+            k=Node(value)
+            k.next=self.head
+            self.head=k
 
     def delete(self,val):
         k=self.head
+        if k.value==val:
+            self.head=k.next
+        prev=None
+        k=self.head
         while k:
             if k.value==val:
-                a=k.prev
-                k.prev.next=k.next
-                k.next.prev=a
+                prev.next=k.next
+            prev=k
             k=k.next
 
     def index(self,val):
@@ -65,7 +60,7 @@ class DLL:
         return i
 
     def val_at_index(self,index):
-        len_list=d.len()
+        len_list=l.len()
         i=0
         k=self.head
         while i<len_list:
@@ -75,39 +70,39 @@ class DLL:
             k=k.next
 
     def del_at_position(self,index):
-        a=d.val_at_index(index)
-        d.delete(a)
+        a=l.val_at_index(index)
+        l.delete(a)
 
     def reverse(self):
         first=self.head
         curr=None
-        while first:
-            curr=first
-            first.prev,first.next=first.next,first.prev
-            first=first.prev
+        while first is not None:
+            k=first.next
+            first.next,curr=curr,first
+            first=k
         self.head=curr
 
-    def insert_at(self,value,index):
-        a=d.len()
+    def insert_at(self,val,index):
+        a=l.len()
         i=0
         k=self.head
-        n=Node(value)
+        n=Node(val)
         while i<a:
             if i==index:
-                p=k.next
+                temp=k.next
                 k.next=n
-                n.next=p
-                n.prev=k
-                n.next.prev=n
-            i+=1
+                n.next=temp
             k=k.next
+            i+=1
 
-d=DLL()
-d.append(10)
-d.append(20)
-d.append(30)
-d.append(40)
-d.append(50)
-d.traverse()
+l=LL()
+l.append(10)
+l.append(20)
+l.append(30)
+l.append(40)
+l.append(50)
+l.append(60)
+l.append(70)
+l.traverse()
 
-#   10<->20<->30<->40<->50
+#   10->20->30->40->50->60->70->
