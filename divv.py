@@ -1,11 +1,11 @@
 class Node:
-    def __init__(self,value):
+    def _init_(self,value):
         self.value=value
         self.prev=None
         self.next=None
 
 class DLL:
-    def __init__(self):
+    def _init_(self):
         self.head=None
 
     def traverse(self):
