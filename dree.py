@@ -10,9 +10,9 @@ class Tree:
 
     def traverse(self,head):
         if head:
-            print(head.value)
-            self.traverse(head.left)
-            self.traverse(head.right)
+            self.traverse(head.left)        #left
+            self.traverse(head.right)       #right
+            print(head.value,end=" ")       #head
 
 t=Tree()
 t.head=Node(1)
@@ -25,9 +25,8 @@ t.head.right.right=Node(7)
 t.traverse(t.head)
 
     #        1
-    #      /   \
-    #     /     \
-    #    2       3
-    #   / \     / \
-    #  /   \   /   \
-    # 4     5 6     7
+    #      /  \
+    #     /    \
+    #    2      3
+    #   / \    / \
+    #  4   5  6   7
