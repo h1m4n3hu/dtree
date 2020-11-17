@@ -8,6 +8,7 @@ class Tree:
     def __init__(self):
         self.head=None
         self.i=0
+        self.l=[]
 
     def traverse(self,head):
         if head:
@@ -36,6 +37,20 @@ class Tree:
             self.size(head.right)       #right
         return self.i
 
+    def leaves(self,head):
+        if head:
+            if head.left is None and head.right is None:
+                print(head.value)
+            self.leaves(head.left)
+            self.leaves(head.right)
+
+    def symmetric(self,head):
+        if head:
+            self.symmetric(head.left)        #left
+            self.l.append(head.value)
+            self.symmetric(head.right)       #right
+        return (self.l)
+
 t=Tree()
 t.head=Node(1)
 t.head.left=Node(2)
@@ -44,7 +59,6 @@ t.head.left.left=Node(4)
 t.head.left.right=Node(5)
 t.head.right.left=Node(6)
 t.head.right.right=Node(7)
-print(t.size(t.head))
 
     #        1
     #      /  \
