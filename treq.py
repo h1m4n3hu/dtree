@@ -28,13 +28,10 @@ class Tree:
             else:
                 break
 
-    def morris(self):
+    def morris_inord(self):
         k=self.root
         while k:
-            if k.left is None:
-                yield k.value
-                k=k.right
-            else:
+            if k.left:
                 pre=k.left
                 while pre.right and pre.right!=k:
                     pre=pre.right
@@ -43,26 +40,17 @@ class Tree:
                     k=k.left
                 else:
                     pre.right=None
-                    yield k.value
+                    print(k.value)
                     k=k.right
-
-    def morri(self):
-        k=self.root
-        while k:
-            if k.left is None:
+            else:
                 print(k.value)
                 k=k.right
-            else:
-                while
-
 
 
 
 t=Tree()
-t.root=Node(4)
+t.root=Node(1)
 t.root.left=Node(2)
-t.root.right=Node(5)
-t.root.left.left=Node(1)
-t.root.left.right=Node(3)
-for i in t.morri():
-    print(i)
+t.root.right=Node(3)
+t.root.left.left=Node(4)
+t.root.left.right=Node(5)
