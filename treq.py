@@ -46,7 +46,25 @@ class Tree:
                 print(k.value)
                 k=k.right
 
-    def morris_preord(self):
+    def morris_post(self):
+        k=self.root
+        while k:
+            if k.right:
+                pre=k.right
+                while pre.left and pre.left!=k:
+                    pre=pre.left
+                if pre.left is None:
+                    yield k.value
+                    pre.left=k
+                    k=k.right
+                else:
+                    pre.left=None
+                    k=k.left
+            else:
+                yield k.value
+                k=k.left
+
+    def morris_pre(self):
         k=self.root
         while k:
             if k.left:
@@ -54,14 +72,14 @@ class Tree:
                 while pre.right and pre.right!=k:
                     pre=pre.right
                 if pre.right is None:
-                    print(k.value,'i')
+                    yield k.value
                     pre.right=k
                     k=k.left
                 else:
                     pre.right=None
                     k=k.right
             else:
-                print(k.value)
+                yield k.value
                 k=k.right
 
 t=Tree()
@@ -72,4 +90,5 @@ t.root.left.left=Node(4)
 t.root.left.right=Node(5)
 t.root.right.left=Node(6)
 t.root.right.right=Node(7)
-t.morris_preord()
+for i in t.morris_pre():
+    print(i)
