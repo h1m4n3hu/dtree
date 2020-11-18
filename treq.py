@@ -82,6 +82,22 @@ class Tree:
                 yield k.value
                 k=k.right
 
+    def printSpiral(self):
+        s1=[]
+        s2=[]
+        s1.append(self.root)
+        while s1 or s2:
+            while s1:
+                k=s1.pop()
+                print(k.value)
+                s2.append(k.right)
+                s2.append(k.left)
+            while s2:
+                k=s2.pop()
+                print(k.value)
+                s1.append(k.left)
+                s1.append(k.right)
+
 t=Tree()
 t.root=Node(1)
 t.root.left=Node(2)
@@ -90,5 +106,4 @@ t.root.left.left=Node(4)
 t.root.left.right=Node(5)
 t.root.right.left=Node(6)
 t.root.right.right=Node(7)
-for i in t.morris_pre():
-    print(i)
+t.printSpiral()
