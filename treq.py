@@ -88,15 +88,49 @@ class Tree:
         s1.append(self.root)
         while s1 or s2:
             while s1:
-                k=s1.pop()
-                print(k.value)
-                s2.append(k.right)
+                k=s1.pop(0)
+                print(k.value,end=" ")
                 s2.append(k.left)
+                s2.append(k.right)
+            print("\n")
             while s2:
-                k=s2.pop()
-                print(k.value)
+                k=s2.pop(0)
+                print(k.value,end=" ")
                 s1.append(k.left)
                 s1.append(k.right)
+            print("\n")
+
+    def rev_lev(self):
+        l=[]
+        ll=[]
+        k=self.root
+        l.append(k)
+        while l:
+            k=l.pop(0)
+            ll.append(k.value)
+            if k.right:l.append(k.right)
+            if k.left:l.append(k.left)
+        for i in reversed(ll):
+            print(i)
+
+    def specific_order(self):   #1234756....4 7 5 6....u see that?
+        k=self.root
+        l1=[]
+        m=k.left
+        l2=[]
+        n=k.right
+        print(k.value)
+        l1.append(m)
+        l2.append(n)
+        while l1 or l2:
+            mm=l1.pop(0)
+            nn=l2.pop(0)
+            print(mm.value)
+            print(nn.value)
+            if mm.left:l1.append(mm.left)
+            if nn.left:l2.append(nn.right)
+            if mm.right:l1.append(mm.right)
+            if nn.right:l2.append(nn.left)
 
 t=Tree()
 t.root=Node(1)
@@ -106,4 +140,4 @@ t.root.left.left=Node(4)
 t.root.left.right=Node(5)
 t.root.right.left=Node(6)
 t.root.right.right=Node(7)
-t.printSpiral()
+t.specific_order()
