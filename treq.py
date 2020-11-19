@@ -7,6 +7,7 @@ class Node:
 class Tree:
     def __init__(self):
         self.root=None
+        self.num=0
 
     def traverse(self,head):
         if head:
@@ -132,6 +133,13 @@ class Tree:
             if mm.right:l1.append(mm.right)
             if nn.right:l2.append(nn.left)
 
+    def height(self,head):
+        if not head:
+            self.num+=1
+            print(self.num)
+            return 0
+        return 1+max(self.height(head.left),self.height(head.right))
+
 t=Tree()
 t.root=Node(1)
 t.root.left=Node(2)
@@ -140,4 +148,4 @@ t.root.left.left=Node(4)
 t.root.left.right=Node(5)
 t.root.right.left=Node(6)
 t.root.right.right=Node(7)
-t.specific_order()
+t.height(t.root)
