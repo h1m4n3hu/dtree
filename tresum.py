@@ -36,16 +36,30 @@ class Tree:
             self.unfulltree(head.left)
             self.unfulltree(head.right)
 
-    def iterfulltree(self):
-        k=self.root
-        l=[]
-        l.append(k)
-        while l:
-            a=l.pop()
-            if not a.left and a.right or not a.right and a.left:
-                print(a.value)
-            if a.right:l.append(a.right)
-            if a.left:l.append(a.left)
+    def nosibling(self,head):
+        if head:
+            if head.left and not head.right:
+                print(head.left.value)
+            if head.right and not head.left:
+                print(head.right.value)
+            self.nosibling(head.left)
+            self.nosibling(head.right)
+
+    def lvl_of_nodes(self,head,l):
+        if head:
+            print(head.value,"is at level",l)
+            self.lvl_of_nodes(head.left,l+1)
+            self.lvl_of_nodes(head.right,l+1)
+
+    def cousins(self,head,value,level):
+        if head:
+            if level==2:
+                print(head.value)
+            self.cousins(head.left,value,level+1)
+            self.cousins(head.right,value,level+1)
+
+    def root2leaf(self):
+        pass
 
 t=Tree()
 t.root=Node(1)
@@ -55,4 +69,4 @@ t.root.left.left=Node(4)
 t.root.left.right=Node(5)
 t.root.right.left=Node(6)
 t.root.right.right=Node(7)
-t.iterfulltree()
+t.cousins(t.root,4,1)
