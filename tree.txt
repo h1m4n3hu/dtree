@@ -69,14 +69,14 @@ Minimum swap required to convert binary tree to binary search tree
 
 
 
-Check for Children Sum Property in a Binary Tree
-Check sum of Covered and Uncovered nodes of Binary Tree
-Check if two nodes are cousins in a Binary Tree
-Check if removing an edge can divide a Binary Tree in two halves
-Check if all leaves are at same level
-Check if a given Binary Tree is SumTree
-Check whether a given binary tree is perfect or not
-Check whether a binary tree is a full binary tree or not
+Check for Children Sum Property in a Binary Tree***
+Check sum of Covered and Uncovered nodes of Binary Tree***
+Check if two nodes are cousins in a Binary Tree***
+Check if removing an edge can divide a Binary Tree in two halves***
+Check if all leaves are at same level***
+Check if a given Binary Tree is SumTree***
+Check whether a given binary tree is perfect or not***
+Check whether a binary tree is a full binary tree or not***
 Check whether a binary tree is a full binary tree or not | Iterative Approach
 Check whether a given Binary Tree is Complete or not | Set 1 (Iterative Solution)
 Check if a given Binary Tree is height balanced like a Red-Black Tree
