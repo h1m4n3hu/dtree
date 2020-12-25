@@ -80,11 +80,11 @@ Check whether a binary tree is a full binary tree or not***
 Check whether a binary tree is a full binary tree or not | Iterative Approach***
 Check whether a given Binary Tree is Complete or not | Set 1 (Iterative Solution)
 Check if a given Binary Tree is height balanced like a Red-Black Tree
-Check if a binary tree is subtree of another binary tree | Set 2
+Check if a binary tree is subtree of another binary tree | Set 2***
 Iterative function to check if two trees are identical
-Check if a Binary Tree (not BST) has duplicate values
-Check if a Binary Tree contains duplicate subtrees of size 2 or more
-Print middle level of perfect binary tree without finding height
+Check if a Binary Tree (not BST) has duplicate values---
+Check if a Binary Tree contains duplicate subtrees of size 2 or more---
+Print middle level of perfect binary tree without finding height***
 Print cousins of a given node in Binary Tree***
 Given a binary tree, print out all of its root-to-leaf paths one per line
 Check if there is a root to leaf path with given sequence
@@ -92,12 +92,12 @@ Print the longest leaf to leaf path in a Binary tree.
 Print path from root to a given node in a binary tree
 Print root to leaf paths without using recursion
 Print all root to leaf paths with there relative positions
-Print the nodes at odd levels of a tree
+Print the nodes at odd levels of a tree***
 Print all full nodes in a Binary Tree
 Print nodes between two given level numbers of a binary tree
-Print nodes at k distance from root
-Print nodes at k distance from root | Iterative
-Print all leaf nodes of a Binary Tree from left to right
+Print nodes at k distance from root***
+Print nodes at k distance from root | Iterative***
+Print all leaf nodes of a Binary Tree from left to right***
 Given a binary tree, print all root-to-leaf paths
 Print all nodes at distance k from a given node
 Print all nodes that don’t have sibling***
@@ -131,7 +131,7 @@ Find largest subtree sum in a tree
 Print all k-sum paths in a binary tree
 Sum of heights of all individual nodes in a binary tree
 Subtree with given sum in a Binary Tree
-Count subtress that sum up to a given value x
+Count subtrees that sum up to a given value x
 Sum of nodes at maximum depth of a Binary Tree
 Difference between sums of odd level and even level nodes of a Binary Tree
 Find maximum level sum in Binary Tree

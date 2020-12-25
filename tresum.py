@@ -3,7 +3,7 @@ class Node:
         self.value=value
         self.left=None
         self.right=None
-
+l=[]
 class Tree:
     def __init__(self):
         self.root=None
@@ -58,8 +58,7 @@ class Tree:
             self.cousins(head.left,value,level+1)
             self.cousins(head.right,value,level+1)
 
-    def root2leaf(self):
-        pass
+
 
 t=Tree()
 t.root=Node(1)
@@ -69,4 +68,3 @@ t.root.left.left=Node(4)
 t.root.left.right=Node(5)
 t.root.right.left=Node(6)
 t.root.right.right=Node(7)
-t.cousins(t.root,4,1)

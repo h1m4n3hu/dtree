@@ -163,8 +163,8 @@ class Tree:
         if k is None:
             return 0
         else:
-            lt = self.height(k.left)
-            rt = self.height(k.right)
+            lt=self.height(k.left)
+            rt=self.height(k.right)
             return 1+lt+rt
 
     #leaves of a tree
@@ -276,7 +276,43 @@ class Tree:
             for i in l: print(i.value)
             break
 
+    def maxr2l(self,root):
+        if root is None:
+            return []
+        left=self.maxr2l(root.left)
+        right=self.maxr2l(root.right)
+        if len(left)>len(right):
+            left.append(root.value)
+        else:
+            right.append(root.value)
+        if len(left)>len(right):
+            return left
+        else:
+            return right
 
+    def node_dia(self,root):
+        if root:
+            print(root.value,"-",self.diameter(root))
+            self.node_dia(root.left)
+            self.node_dia(root.right)
+
+    def full_path(self,root):
+        if root:
+            if self.diameter(root)>self.diameter(root.left) and self.diameter(root)>self.diameter(root.right):
+                l.extend(self.maxr2l(root.left))
+                l.append(root.value)
+                l.extend(self.maxr2l(root.right))
+                print(l)
+            if self.diameter(root.left)>self.diameter(root.right):
+                self.full_path(root.left)
+            if self.diameter(root.right)>self.diameter(root.left):
+                self.full_path(root.right)
+
+    def vert(self,root,dist):
+        if root:
+            self.vert(root.left,dist-1)
+            print(root.value,dist)
+            self.vert(root.right,dist+1)
 
 t=Tree(Node(1))
 t.root.left=Node(2)
@@ -288,4 +324,4 @@ t.root.right.right=Node(7)
 #t.preorder_iter()   #1 2 4 5 3 6 7
 #t.inorder_iter()    #4 2 5 1 6 3 7
 #t.postorder_iter()  #4 5 2 6 7 3 1
-t.rev_level()
+t.vert(t.root,0)
