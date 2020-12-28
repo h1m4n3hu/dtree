@@ -1,4 +1,5 @@
-arr=[5,4,1,3,7,10,2]
+arr=[3,8,1,9,4,5,7]
+arr2=[3,8,1,9,4,5,7]
 
 def selsort():
     for i in range(len(arr)):
@@ -72,65 +73,17 @@ def mrgsort(arr):
         j+=1
     return sorted
 
+def part(arr,low):
+    i=low-1
+    pivot=len(arr)-1
+    for j in range(low,len(arr)):
+        if arr[j]<arr[pivot]:
+            i+=1
+            arr[i],arr[j]=arr[j],arr[i]
+        print(arr)
+    arr[i+1],arr[j]=arr[j],arr[i+1]
+    print(arr)
+part(arr2,0)
 
-def mergeSort(a):
-    current_size = 1
-
-    while current_size < len(a) - 1:
-
-        left = 0
-        while left < len(a) - 1:
-            mid = min((left + current_size - 1), (len(a) - 1))
-            print(mid,"mid")
-
-            right = ((2 * current_size + left - 1, len(a) - 1)[2 * current_size + left - 1 > len(a) - 1])
-            print(right,"right")
-
-            print(left,"left")
-
-            merge(a, left, mid, right)
-            left = left + current_size * 2
-            print(left,"left")
-            print("=== === ===")
-
-        current_size = 2 * current_size
-
-
-def merge(a, left, mid, right):
-    n1 = mid - left + 1
-    print(n1,end="_  ")
-    n2 = right - mid
-    print(n2,end="_  ")
-    L = [0] * n1
-    print(L,end="  ")
-    R = [0] * n2
-    print(R,end="  ")
-    for i in range(0, n1):
-        L[i] = a[left + i]
-    print(L,end="  ")
-    for i in range(0, n2):
-        R[i] = a[mid + i + 1]
-    print(R)
-
-    i, j, k = 0, 0, left
-    while i < n1 and j < n2:
-        if L[i] > R[j]:
-            a[k] = R[j]
-            j += 1
-        else:
-            a[k] = L[i]
-            i += 1
-        k += 1
-
-    while i < n1:
-        a[k] = L[i]
-        i += 1
-        k += 1
-
-    while j < n2:
-        a[k] = R[j]
-        j += 1
-        k += 1
-    print(a)
-
-
+def qksort():
+    pass
