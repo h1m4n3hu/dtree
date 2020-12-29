@@ -1,5 +1,4 @@
-arr=[3,8,1,9,4,5,7]
-arr2=[3,8,1,9,4,5,7]
+arr=[3,3,1,3,4,5,4]
 
 def selsort():
     for i in range(len(arr)):
@@ -73,17 +72,39 @@ def mrgsort(arr):
         j+=1
     return sorted
 
-def part(arr,low):
+def part(arr,low,high):
     i=low-1
-    pivot=len(arr)-1
-    for j in range(low,len(arr)):
+    pivot=high
+    for j in range(low,high):
         if arr[j]<arr[pivot]:
             i+=1
             arr[i],arr[j]=arr[j],arr[i]
-        print(arr)
-    arr[i+1],arr[j]=arr[j],arr[i+1]
-    print(arr)
-part(arr2,0)
+        #print(arr)
+    arr[i+1],arr[pivot]=arr[pivot],arr[i+1]
+    return i+1
 
-def qksort():
-    pass
+def qksort(arr,low,high):
+    if low<high:
+        pp=part(arr,low,high)
+        qksort(arr,low,pp)
+        qksort(arr,pp+2,high)
+
+def countsort():
+    op=[0]*len(arr)
+    zer=[0]*len(arr)
+    for i in arr:
+        zer[i]+=1
+
+    for i in range(1,len(zer)):
+        zer[i]+=zer[i-1]
+
+    
+
+    i=len(arr)-1
+    while i>=0:
+        op[zer[arr[i]]-1]=arr[i]
+        zer[arr[i]]-=1
+        i-=1
+    print(op)
+
+countsort()
